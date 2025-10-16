@@ -2,6 +2,8 @@
 
 A GitHub Action that runs [seo-reporter](https://www.npmjs.com/package/seo-reporter) to analyze your website's SEO and automatically upload HTML and CSV reports as artifacts.
 
+> 🚀 **New to GitHub Actions?** Check out our [Quick Start Guide](QUICKSTART.md) to get started in 5 minutes!
+
 ## Features
 
 - 🕷️ **Website Crawling**: Analyzes your entire site with configurable depth and concurrency
