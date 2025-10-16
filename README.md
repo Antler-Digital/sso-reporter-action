@@ -216,9 +216,43 @@ The action runs comprehensive SEO checks including:
 - Node.js 20 (provided by the action)
 - Internet access to crawl the target website
 
+## Troubleshooting
+
+### Action fails with "command not found"
+Make sure you're using `ubuntu-latest` as your runner. The action requires a Linux environment.
+
+### Reports are not uploaded
+Check that the crawl completed successfully. The action will upload artifacts even if some pages failed to crawl, as long as at least one page was analyzed.
+
+### Webhook is not called
+- Verify the webhook URL is correct and accessible from GitHub Actions runners
+- Check the webhook endpoint logs for any errors
+- Note that webhook failures are logged as warnings and won't fail the action
+
+### Crawl takes too long or times out
+- Reduce `max-pages` or `max-depth`
+- Increase `concurrency` for faster crawling (but be mindful of rate limits)
+- Some sites may have rate limiting that slows down the crawl
+
+### Memory issues
+If crawling very large sites (5000+ pages), you may need to adjust the workflow timeout or split the analysis into multiple runs.
+
+## Development
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
+
+### Building the Action
+
+```bash
+npm install
+npm run build
+```
+
+This compiles the action using `@vercel/ncc` into a single file in `dist/index.js`.
+
 ## License
 
-ISC
+ISC - See [LICENSE](LICENSE) file for details.
 
 ## Credits
 
