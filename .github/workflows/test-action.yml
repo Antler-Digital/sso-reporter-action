@@ -1,0 +1,29 @@
+name: Test SEO Reporter Action
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL to test'
+        required: true
+        default: 'https://example.com'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run SEO Reporter
+        id: seo-report
+        uses: ./
+        with:
+          url: ${{ github.event.inputs.url }}
+          max-depth: 2
+          max-pages: 50
+          concurrency: 5
+      
+      - name: Check outputs
+        run: |
+          echo "Report path: ${{ steps.seo-report.outputs.report-path }}"
+          echo "CSV path: ${{ steps.seo-report.outputs.csv-path }}"
