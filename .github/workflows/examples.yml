@@ -1,0 +1,64 @@
+name: SEO Reporter Examples
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # Example 1: Basic usage
+  basic-seo-check:
+    name: Basic SEO Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run SEO Reporter
+        uses: ./
+        with:
+          url: https://example.com
+
+  # Example 2: Advanced configuration
+  advanced-seo-check:
+    name: Advanced SEO Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Deep SEO Analysis
+        uses: ./
+        with:
+          url: https://example.com
+          max-depth: 5
+          max-pages: 1000
+          concurrency: 15
+          output-dir: deep-seo-report
+
+  # Example 3: With webhook
+  seo-check-with-webhook:
+    name: SEO Check with Webhook
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run SEO Reporter with Notification
+        uses: ./
+        with:
+          url: https://example.com
+          webhook-url: ${{ secrets.WEBHOOK_URL }}
+          webhook-method: POST
+
+  # Example 4: Post-deployment (simulated)
+  post-deploy-seo:
+    name: Post-Deploy SEO Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Simulate deployment
+        run: echo "Deployment completed to production"
+      
+      - name: Run SEO Analysis
+        uses: ./
+        with:
+          url: https://example.com
+          max-depth: 3
+          max-pages: 500

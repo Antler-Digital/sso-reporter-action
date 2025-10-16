@@ -1,0 +1,44 @@
+name: 'SEO Reporter Action'
+description: 'Run SEO analysis and generate reports with artifacts'
+author: 'Antler Digital'
+branding:
+  icon: 'file-text'
+  color: 'blue'
+
+inputs:
+  url:
+    description: 'The URL to crawl and analyze'
+    required: true
+  max-depth:
+    description: 'Maximum crawl depth (default: 3)'
+    required: false
+    default: '3'
+  max-pages:
+    description: 'Maximum number of pages to crawl (default: 1000)'
+    required: false
+    default: '1000'
+  concurrency:
+    description: 'Number of concurrent requests (default: 10)'
+    required: false
+    default: '10'
+  webhook-url:
+    description: 'Webhook URL to call when the report is complete'
+    required: false
+  webhook-method:
+    description: 'HTTP method for webhook (GET or POST, default: POST)'
+    required: false
+    default: 'POST'
+  output-dir:
+    description: 'Output directory for reports (default: seo-report)'
+    required: false
+    default: 'seo-report'
+
+outputs:
+  report-path:
+    description: 'Path to the generated HTML report'
+  csv-path:
+    description: 'Path to the generated CSV reports directory'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

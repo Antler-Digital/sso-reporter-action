@@ -1,0 +1,4 @@
+node_modules/
+seo-report/
+*.log
+.DS_Store
